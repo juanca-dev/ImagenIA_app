@@ -1,0 +1,58 @@
+<app-header isModal="true" title="Publicación"></app-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="6" size-md="12" size-sm="12" size="12">
+
+        <ion-item line="none" class="ion-hide-md-up prompt-item">
+          <ion-label class="ion-text-wrap"> {{post.prompt}}</ion-label>
+
+          <ion-buttons slot="end">
+            <ion-button (click)="copyPromptToClipboard()">
+              <ion-icon name="clipboard-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+
+        <h1 class="d-flex-center ion-hide-md-down">
+          {{post.prompt}}
+
+          <ion-button (click)="copyPromptToClipboard()" class="ion-margin" color="darck" fill="outline" shape="round">
+            <ion-icon name="clipboard-outline"></ion-icon>
+          </ion-button>
+        </h1>
+
+        <div class="user">Creado por {{post.name}}</div>
+      </ion-col>
+
+      <ion-col size-lg="6" size-md="12" size-sm="12" size="12">
+
+        <ion-grid class="images-wrapper">
+          <ion-row>
+            <ion-col size="12">
+              <img [src]="selectedImage" width="100%">
+            </ion-col>
+            <ion-col class="click" (click)="selectedImage = image" *ngFor="let image of post.images" size="3">
+              <img [ngClass]="{'selected': selectedImage === image}" [src]="image">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="d-flex-center ion-text-center">
+          <ion-button (click)="saveImage()" class="submit-btn" color="tertiary" shape="round">
+            {{ platform.is('capacitor') ? 'Compartir' : 'Guardar'}}
+            <ion-icon slot="end"
+              [name]="platform.is('capacitor') ? 'share-social-outline' : 'arrow-down-circle-outline'"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="isNew" (click)="submit()" class="submit-btn" shape="round">
+            Publicar <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

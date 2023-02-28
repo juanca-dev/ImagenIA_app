@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
+      <ion-button (click)="dismissModal()" *ngIf="isModal">
+        <ion-icon class="modal-icon" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <div class="app-name">Imagen smart</div>
+      <strong>{{title}} <ion-icon name="color-wand-outline"></ion-icon></strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>

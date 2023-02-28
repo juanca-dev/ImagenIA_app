@@ -1,0 +1,29 @@
+.input-item{
+    --border-radius: 10px;
+    --background: var(--ion-color-light);
+   margin: 20px 
+}
+
+.title-item{
+    --background: transparent;
+    --padding-top: 10px;
+    --padding-bottom: 10px
+
+    ion-label{
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 23px
+        text-transform: uppercase;
+    }
+
+}
+
+
+.post{
+    padding-top: 20px;
+    margin: 20px;
+    border-bottom: 1px solid #dbdada;
+}
+img{
+    border-radius: 10px;
+}

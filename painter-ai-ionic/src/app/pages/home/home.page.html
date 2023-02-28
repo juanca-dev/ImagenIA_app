@@ -1,0 +1,58 @@
+<app-header title="Inicio"></app-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ion-padding-horizontal">
+    <h1>Bienvenido/a</h1>
+    <h4>¡Genera <strong>imagenes creativas</strong> <br> con tan solo escribir una descripción</h4>
+  </div>
+
+  <!--- ======  Posts  ====== -->
+
+  <ion-grid *ngIf="posts.length">
+    <ion-row>
+      <ion-col class="click" (click)="showPostDetail(p)" [ngClass]="{'col-down': i % 2 !== 0}" size-lg="3" size-md="3" size-sm="6" size="6"
+        *ngFor="let p of posts; index as i">
+
+        <ion-avatar>
+          <img [src]="p.images[0]" />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--- ======  Loading  ====== ---->
+
+  <ion-grid *ngIf="loading">
+    <ion-row>
+      <ion-col [ngClass]="{'col-down': i % 2 !== 0}" size-lg="3" size-md="3" size-sm="6" size="6"
+        *ngFor="let p of [1,1,1,1,1,1]; index as i">
+
+        <ion-avatar>
+          <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="empty" *ngIf="!posts.length && !loading">
+    <ion-icon name="images-outline"></ion-icon>
+    <h4>No hay publicaciones disponibles</h4>
+  </div>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/create-images">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+
+</ion-content>
