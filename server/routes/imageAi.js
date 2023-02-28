@@ -24,9 +24,9 @@ router.route('/').post(async (req, res) => {
             response_format: 'b64_json'
         })
 
-        //let images = aiResponse.data.data.map(e => {
-           /// return ('data:image/jpeg;base64,' + e.b64_json)
-      //  })
+        let images = aiResponse.data.data.map(e => {
+           return ('data:image/jpeg;base64,' + e.b64_json)
+       })
 
 
 
